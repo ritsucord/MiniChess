@@ -1,5 +1,5 @@
 #include <iostream>
-#include "chess.h"
+#include "chess.hpp"
 using namespace std;
 
 void print(DefaultGameBoard& game) {
