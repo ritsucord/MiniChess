@@ -409,7 +409,8 @@ vector<pair<int, int>> King::getMoves()
         }
         moves.push_back(move);
     }
-    if (castling && !board.isChecked(this)) {
+    // if (castling && !board.isChecked(this)) {
+    if (castling) {
         Piece* p1 = board.board[0][tile.y]->piece;
         if (p1 != nullptr && p1->type == PieceType::ROOK) {
             Rook* rook = static_cast<Rook*>(p1);
@@ -422,16 +423,16 @@ vector<pair<int, int>> King::getMoves()
                     }
                 }
                 bool onAttack = false;
-                for (int dx = 0; dx > -2; --dx) {
-                    board.board[tile.x + dx][tile.y]->piece = nullptr;
-                    board.board[tile.x + dx - 1][tile.y]->piece = this;
-                    at = board.board[tile.x + dx - 1][tile.y];
-                    if (board.isChecked(this))
-                        onAttack = true;
-                }
-                board.board[tile.x - 2][tile.y]->piece = nullptr;
-                tile.piece = this;
-                at = &tile;
+                // for (int dx = 0; dx > -2; --dx) {
+                //     board.board[tile.x + dx][tile.y]->piece = nullptr;
+                //     board.board[tile.x + dx - 1][tile.y]->piece = this;
+                //     at = board.board[tile.x + dx - 1][tile.y];
+                //     if (board.isChecked(this))
+                //         onAttack = true;
+                // }
+                // board.board[tile.x - 2][tile.y]->piece = nullptr;
+                // tile.piece = this;
+                // at = &tile;
                 if (isEmpty && !onAttack)
                     moves.push_back({tile.x - 2, tile.y});
             }
@@ -448,16 +449,16 @@ vector<pair<int, int>> King::getMoves()
                     }
                 }
                 bool onAttack = false;
-                for (int dx = 0; dx < 2; ++dx) {
-                    board.board[tile.x + dx][tile.y]->piece = nullptr;
-                    board.board[tile.x + dx + 1][tile.y]->piece = this;
-                    at = board.board[tile.x + dx + 1][tile.y];
-                    if (board.isChecked(this))
-                        onAttack = true;
-                }
-                board.board[tile.x + 2][tile.y]->piece = nullptr;
-                tile.piece = this;
-                at = &tile;
+                // for (int dx = 0; dx < 2; ++dx) {
+                //     board.board[tile.x + dx][tile.y]->piece = nullptr;
+                //     board.board[tile.x + dx + 1][tile.y]->piece = this;
+                //     at = board.board[tile.x + dx + 1][tile.y];
+                //     if (board.isChecked(this))
+                //         onAttack = true;
+                // }
+                // board.board[tile.x + 2][tile.y]->piece = nullptr;
+                // tile.piece = this;
+                // at = &tile;
                 if (isEmpty && !onAttack)
                     moves.push_back({tile.x + 2, tile.y});
             }
